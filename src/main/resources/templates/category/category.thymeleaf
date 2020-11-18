@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <title>Categories</title>
+    <link rel="stylesheet" href="/css/foundation.css">
+    <script type="application/javascript" src="/js/jquery.js"></script>
+    <script type="application/javascript" src="/js/what-input.js"></script>
+    <script type="application/javascript" src="/js/foundation.js"></script>
+</head>
+<body>
+
+</body>
+</html>
