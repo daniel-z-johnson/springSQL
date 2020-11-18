@@ -1,0 +1,8 @@
+spring:
+    datasource:
+        username: article
+        password: postgress
+        url: jdbc:postgresql://localhost:5433/article
+    thymeleaf:
+        suffix: .thymeleaf
+
