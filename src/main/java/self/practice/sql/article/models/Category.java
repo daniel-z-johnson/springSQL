@@ -1,13 +1,16 @@
 package self.practice.sql.article.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "categories")
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Type(type = "pg-uuid")
     private UUID id;
 
     @Column(name = "name")
