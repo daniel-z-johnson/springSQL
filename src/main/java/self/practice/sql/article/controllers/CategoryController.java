@@ -24,13 +24,16 @@ public class CategoryController {
     @GetMapping("/categories")
     public String index(Model model) {
         model.addAttribute("category", new Category());
+        model.addAttribute("categories", categoryService.getAll());
         return "category/category";
     }
 
     @PostMapping("/categories")
-    public String save(@ModelAttribute Category category) {
+    public String save(@ModelAttribute Category category, Model model) {
         LOGGER.info("Category: {}", category);
         categoryService.save(category);
+        model.addAttribute("category", new Category());
+        model.addAttribute("categories", categoryService.getAll());
         return "category/category";
     }
 }

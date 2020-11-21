@@ -20,7 +20,7 @@ public class CategoryServiceImp  implements CategoryService {
     }
 
     @Override
-    public Iterable<Category> get() {
+    public Iterable<Category> getAll() {
         return categoryRepository.findAll();
     }
 
