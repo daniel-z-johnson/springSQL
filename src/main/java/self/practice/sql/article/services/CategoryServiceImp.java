@@ -3,6 +3,7 @@ package self.practice.sql.article.services;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import self.practice.sql.article.exceptions.InvalidCategory;
 import self.practice.sql.article.models.Category;
 import self.practice.sql.article.repositories.CategoryRepository;
 
@@ -26,6 +27,9 @@ public class CategoryServiceImp  implements CategoryService {
 
     @Override
     public Category save(Category category) {
+        if(category.getName().isEmpty() || category.getDescription().isEmpty()) {
+            throw new InvalidCategory("Name or description is empty, not allowed");
+        }
         category.setId(UUID.randomUUID());
         LOGGER.info("Category: {}", category);
         return categoryRepository.save(category);

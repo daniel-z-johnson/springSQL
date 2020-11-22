@@ -4,9 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import self.practice.sql.article.exceptions.InvalidCategory;
 import self.practice.sql.article.models.Category;
 import self.practice.sql.article.services.CategoryService;
 
@@ -32,6 +34,15 @@ public class CategoryController {
     public String save(@ModelAttribute Category category, Model model) {
         LOGGER.info("Category: {}", category);
         categoryService.save(category);
+        model.addAttribute("category", new Category());
+        model.addAttribute("categories", categoryService.getAll());
+        return "category/category";
+    }
+
+    @ExceptionHandler(InvalidCategory.class)
+    public String issue(Model model, InvalidCategory invalidCategory) {
+        LOGGER.info("An issue occured");
+        model.addAttribute("alert", invalidCategory.getAlert());
         model.addAttribute("category", new Category());
         model.addAttribute("categories", categoryService.getAll());
         return "category/category";

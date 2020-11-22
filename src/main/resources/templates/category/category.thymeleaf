@@ -18,6 +18,12 @@
 </head>
 <body>
 <div class="container">
+    <div th:if="${alert}">
+        <div class="alert alert-danger" role="alert" th:text="${alert}">
+            alert
+        </div>
+    </div>
+
     <div th:each="category : ${categories}">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
