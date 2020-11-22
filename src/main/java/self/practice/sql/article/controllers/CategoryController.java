@@ -41,7 +41,7 @@ public class CategoryController {
 
     @ExceptionHandler(InvalidCategory.class)
     public String issue(Model model, InvalidCategory invalidCategory) {
-        LOGGER.info("An issue occured");
+        LOGGER.info("An issue occurred");
         model.addAttribute("alert", invalidCategory.getAlert());
         model.addAttribute("category", new Category());
         model.addAttribute("categories", categoryService.getAll());
